@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Only one bean of type Address -->
+    <bean id="addr1" class="com.springcore.beanAutoWire.Address">
+        <property name="city" value="Bengaluru"/>
+        <property name="state" value="Karnataka"/>
+    </bean>
+
+    <bean id="employee" class="com.springcore.beanAutoWire.Employee" autowire="byType">
+        <property name="id" value="103"/>
+        <property name="name" value="Rahul Sharma"/>
+    </bean>
+
+</beans>
+
+        <!--
+What happens:
+
+Spring looks for a bean of type Address.
+
+Since only one bean of that type exists, it injects it automatically.
+
+ If multiple beans of the same type exist (e.g., addr1, addr2 both of type Address),
+Spring throws NoUniqueBeanDefinitionException.
+
+Use Case:
+When bean names differ, but types are unique in the context.
+
+Employee has a property of type Address
+
+There’s one bean in the context of type Address
+
+Spring doesn’t care what the bean ID is (addr, home, office, etc.)
+It only cares about type = Address
+
+Example When It Fails
+
+If you have two beans of the same type:
+
+<bean id="addr1" class="com.example.autowire.Address"/>
+<bean id="addr2" class="com.example.autowire.Address"/>
+
+
+Now Spring sees two beans of the same property type (Address) — it won’t know which one to inject.
+
+You’ll get:
+
+org.springframework.beans.factory.NoUniqueBeanDefinitionException
+
+        -->

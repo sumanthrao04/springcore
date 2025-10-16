@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.springcore.beanAutoWire.Address">
+        <property name="city" value="Shivamogga"/>
+        <property name="state" value="Karnataka"/>
+    </bean>
+
+    <bean id="employee" class="com.springcore.beanAutoWire.Employee" autowire="byName">
+        <property name="id" value="05"/>
+        <property name="name" value="Nagendra BS"/>
+    </bean>
+
+</beans>
+
+
+        <!--
+ What happens:
+
+Spring looks for a bean with id = address because Employee has a property named address.
+
+If found → automatically injects it.
+
+ If your bean was named addr instead of address, auto-wiring would fail silently → address property remains null.
+
+ Use Case:
+When property names and bean ids are always consistent (e.g., employee has address → bean id = address).
+        -->

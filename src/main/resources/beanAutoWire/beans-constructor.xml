@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.springcore.beanAutoWire.Address">
+        <property name="city" value="Bengaluru"/>
+        <property name="state" value="Karnataka"/>
+    </bean>
+
+    <bean id="employee" class="com.springcore.beanAutoWire.Employee" autowire="constructor">
+        <property name="id" value="06"/>
+        <property name="name" value="Pradeep"/>
+    </bean>
+
+</beans>
+
+        <!--
+What happens:
+
+Spring finds a constructor in Employee that accepts an Address type.
+
+It injects the Address bean at object creation (before any setter calls).
+
+ If there are multiple constructors or multiple beans of same type, Spring might get confused → you’ll get a constructor ambiguity error.
+
+Use Case:
+When a dependency is mandatory and must be available at creation time (e.g., for immutable beans).
+        -->

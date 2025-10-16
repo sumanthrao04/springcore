@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.springcore.beanAutoWire.Address">
+        <property name="city" value="Davangere"/>
+        <property name="state" value="Karnataka"/>
+    </bean>
+
+    <bean id="employee" class="com.springcore.beanAutoWire.Employee">
+        <property name="id" value="04"/>
+        <property name="name" value="Sumanth Parashuram"/>
+        <property name="address" ref="address"/>
+    </bean>
+
+</beans>
+
+
+        <!--
+beans-no.xml → Manual Wiring (Default)
+
+You must explicitly link Employee and Address beans
+
+Spring does not auto-wire anything.
+
+You manually connect beans using <property> or <constructor-arg>.
+
+Use Case:
+When you want explicit and predictable configuration — useful in large or legacy apps where naming consistency isn’t guaranteed.
+
+
+        -->
