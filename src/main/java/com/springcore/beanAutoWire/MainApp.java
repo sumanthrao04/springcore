@@ -7,8 +7,8 @@ public class MainApp {
     public static void main(String[] args) {
 
         //  Choose one config file at a time:
-         String config = "beanAutoWire/beans-no.xml";
-        // String config = "beanAutoWire/beans-byName.xml";
+       //  String config = "beanAutoWire/beans-no.xml";
+         String config = "beanAutoWire/beans-byName.xml";
         // String config = "beanAutoWire/beans-byType.xml";
        // String config = "beanAutoWire/beans-constructor.xml";
 
